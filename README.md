@@ -37,6 +37,23 @@ The tool automatically finds the JSON download link by:
 
 No browser automation required—just lightweight HTTP requests and HTML parsing.
 
+## Using in CI/CD
+
+Perfect for automated workflows! No installation needed with `uvx`:
+
+```yaml
+# .github/workflows/your-workflow.yml
+- name: Install uv
+  uses: astral-sh/setup-uv@v5
+
+- name: Download Azure IP ranges
+  run: uvx --from git+https://github.com/VEUKA/azip azip get --filename azure-ips.json
+```
+
+**See it in action:** [`.github/workflows/demo-download.yml`](.github/workflows/demo-download.yml)
+
+Works with any CI/CD platform (GitHub Actions, GitLab CI, Jenkins, etc.)!
+
 ## Output Example
 
 ```log

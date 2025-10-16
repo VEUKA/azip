@@ -1,0 +1,38 @@
+name: Demo - Download Azure IPs
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  download-azure-ips:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Download Azure IP ranges with uvx
+        run: |
+          uvx --from git+https://github.com/VEUKA/azip azip get --filename azure-ips.json
+
+      - name: Verify download
+        run: |
+          ls -lh azure-ips.json
+          echo "File size: $(du -h azure-ips.json | cut -f1)"
+          echo "First 5 lines:"
+          head -n 5 azure-ips.json
+
+      - name: Upload Azure IPs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: azure-ip-ranges-${{ github.run_number }}
+          path: azure-ips.json
+          retention-days: 7
+
+      - name: Extract statistics
+        run: |
+          echo "📊 Azure IP Ranges Statistics:"
+          echo "Change Number: $(jq -r '.changeNumber' azure-ips.json)"
+          echo "Cloud: $(jq -r '.cloud' azure-ips.json)"
+          echo "Total Services: $(jq '.values | length' azure-ips.json)"
