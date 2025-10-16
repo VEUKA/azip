@@ -39,7 +39,7 @@ No browser automation required—just lightweight HTTP requests and HTML parsing
 
 ## Output Example
 
-```text
+```log
 🌐 Opening download page...
    https://www.microsoft.com/en-us/download/details.aspx?id=56519
 ✓ Page loaded successfully
@@ -51,4 +51,3 @@ No browser automation required—just lightweight HTTP requests and HTML parsing
 ✓ Download complete: ServiceTags_Public_20251013.json
    File size: 4.1 MB
 ```
-

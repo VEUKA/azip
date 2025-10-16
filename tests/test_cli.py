@@ -26,7 +26,7 @@ def test_get_command_with_filename(
         *,
         source_url: str,
         timeout_s: int,
-    ) -> Path:  # type: ignore[override]
+    ) -> Path:
         captured["destination"] = destination
         captured["source_url"] = source_url
         captured["timeout_s"] = timeout_s
@@ -62,7 +62,7 @@ def test_get_command_default_filename(
         *,
         source_url: str,
         timeout_s: int,
-    ) -> Path:  # type: ignore[override]
+    ) -> Path:
         assert destination is None
         target = tmp_path / "download.json"
         target.write_text("{}", encoding="utf-8")
@@ -87,7 +87,7 @@ def test_get_command_with_download_error(
         *,
         source_url: str,
         timeout_s: int,
-    ) -> Path:  # type: ignore[override]
+    ) -> Path:
         raise DownloadError("Simulated download failure")
 
     monkeypatch.setattr("azip.cli.download_json", fake_download_error)
@@ -113,7 +113,7 @@ def test_get_command_with_custom_source_url(
         *,
         source_url: str,
         timeout_s: int,
-    ) -> Path:  # type: ignore[override]
+    ) -> Path:
         captured["source_url"] = source_url
         target = tmp_path / "test.json"
         target.write_text("{}", encoding="utf-8")

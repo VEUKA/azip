@@ -5,6 +5,7 @@ This project has multiple categories of tests.
 ## Test Categories
 
 ### Unit Tests
+
 Fast tests that use mocks and don't require external resources.
 
 ```bash
@@ -13,6 +14,7 @@ pytest tests/ -m "not e2e"
 ```
 
 ### End-to-End (E2E) Tests
+
 Slower tests that make real HTTP requests to test the full integration flow.
 
 ```bash
@@ -24,6 +26,7 @@ pytest tests/test_e2e.py::test_download_json_e2e -v
 ```
 
 ### All Tests
+
 ```bash
 # Run all tests including E2E
 pytest tests/ -v
@@ -47,7 +50,7 @@ open htmlcov/index.html
 
 ## Test Structure
 
-```
+```log
 tests/
 ├── test_cli.py         # CLI command tests (mocked)
 ├── test_downloader.py  # Downloader unit tests (mocked with BeautifulSoup)
@@ -86,6 +89,7 @@ Example GitHub Actions workflow:
 ## Writing New Tests
 
 ### Unit Test Example
+
 ```python
 def test_my_function(monkeypatch):
     # Use mocks for external dependencies
@@ -95,6 +99,7 @@ def test_my_function(monkeypatch):
 ```
 
 ### E2E Test Example
+
 ```python
 @pytest.mark.e2e
 def test_real_download(tmp_path):

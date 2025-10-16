@@ -24,6 +24,9 @@ azip = "azip.cli:app"
 dev = [
     "pytest>=8.3.3",
     "pytest-cov>=6.0.0",
+    "mypy>=1.11.0",
+    "types-requests>=2.31.0",
+    "types-beautifulsoup4>=4.12.0",
 ]
 
 [tool.uv]
@@ -31,10 +34,22 @@ default-groups = ["dev"]
 
 [tool.pytest.ini_options]
 markers = [
-    "e2e: End-to-end tests using real Playwright browser (slow)",
+    "e2e: End-to-end tests with real HTTP requests (slow)",
 ]
-asyncio_mode = "auto"
-asyncio_default_fixture_loop_scope = "function"
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_any_unimported = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+check_untyped_defs = true
+ignore_missing_imports = false
 
 [build-system]
 requires = ["uv_build>=0.9.2,<0.10.0"]

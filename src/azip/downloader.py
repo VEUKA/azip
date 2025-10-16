@@ -122,16 +122,17 @@ def _extract_download_url(soup: BeautifulSoup, base_url: str) -> str:
 
     # Prefer links that end with .json
     for link in json_links:
-        href = link.get("href", "")
-        if href.endswith(".json"):
+        href = link.get("href")
+        # Ensure href is a string and not None or a list
+        if isinstance(href, str) and href.endswith(".json"):
             return urljoin(base_url, href)
 
     # Fall back to any link containing .json
-    href = json_links[0].get("href", "")
-    if not href:
+    first_href = json_links[0].get("href")
+    if not isinstance(first_href, str) or not first_href:
         raise DownloadError("JSON link did not contain a valid href attribute.")
 
-    return urljoin(base_url, href)
+    return urljoin(base_url, first_href)
 
 
 def _download_file(
