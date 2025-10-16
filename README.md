@@ -1,5 +1,10 @@
 # azip
 
+[![Unit Tests](https://github.com/VEUKA/azip/actions/workflows/test-unit.yml/badge.svg)](https://github.com/VEUKA/azip/actions/workflows/test-unit.yml)
+[![E2E Tests](https://github.com/VEUKA/azip/actions/workflows/test-e2e.yml/badge.svg)](https://github.com/VEUKA/azip/actions/workflows/test-e2e.yml)
+[![Full Test Suite](https://github.com/VEUKA/azip/actions/workflows/test-full.yml/badge.svg)](https://github.com/VEUKA/azip/actions/workflows/test-full.yml)
+[![Demo - Download Azure IPs](https://github.com/VEUKA/azip/actions/workflows/demo-download.yml/badge.svg)](https://github.com/VEUKA/azip/actions/workflows/demo-download.yml)
+
 Download Azure IP ranges JSON from Microsoft.
 
 ## Quick Start
